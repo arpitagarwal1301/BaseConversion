@@ -1,0 +1,50 @@
+import java.io.*;
+import java.lang.*;
+import java.util.*;
+
+class Solution{
+	
+	public static void main(String args[]){
+		Scanner scn = new Scanner(System.in);
+
+		//Taking input no.
+		System.out.println("Enter no n in decimal between 0 to 256 inclusive");
+		int n = scn.nextInt();
+
+		//Taking input base.
+		System.out.println("Enter the required base of the no");
+		int b = scn.nextInt();
+
+		base(n,b);
+	}
+
+	private static void base(int n,int b){
+		int quo = n,i=0;
+		int arr[] = new int[100];
+
+		//initialising array value to 0
+		for(int w:arr)
+			w=0;
+
+		//taking quotient and remainder
+		while(quo!=0){
+			arr[i++] = quo%b;
+			quo = quo/b;
+		}
+
+		//finding first instance of non zero
+		int temp=99;
+		while(arr[temp]==0){
+			temp--;
+		}
+
+		//printing the value
+		for(int val=temp;val>=0;val--){
+
+			if(arr[val]>9)
+				System.out.print((char)('A'+arr[val]-10));
+			else
+				System.out.print(arr[val]);
+		}
+	}
+}
